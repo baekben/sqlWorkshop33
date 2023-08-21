@@ -22,14 +22,14 @@ export default function NavBar({ userToken }) {
                 Routines
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/activites"
                 className="block py-2 pl-3 pr-4 rounded md:bg-transparent md:p-0"
               >
                 Activities
               </Link>
-            </li>
+            </li> */}
             <li>{userToken && <p>Logged In</p>}</li>
           </ul>
         </div>

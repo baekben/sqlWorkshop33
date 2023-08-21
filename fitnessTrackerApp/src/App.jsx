@@ -5,6 +5,7 @@ import Activities from "./components/Activites";
 import NavBar from "./components/NavBar";
 import Routines from "./components/routines";
 import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
                 <Activities userToken={userToken} setUserToken={setUserToken} />
               }
             ></Route>
+            <Route path="/signUp" element={<SignUp />}></Route>
           </Routes>
         </BrowserRouter>
       </div>
