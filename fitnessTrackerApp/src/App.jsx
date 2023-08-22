@@ -1,7 +1,7 @@
 //import { useState, useEffect } from "react";
 import "./App.css";
 import { useState } from "react";
-import Activities from "./components/Activites";
+import Activities from "./components/Activities";
 import NavBar from "./components/NavBar";
 import Routines from "./components/routines";
 import Login from "./components/Login";
@@ -9,8 +9,9 @@ import SignUp from "./components/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  const [user, setUser] = useState();
   const [userToken, setUserToken] = useState(null);
-
+  const [activities, setActivities] = useState();
   // useEffect(() => {
   //   async function fetchData() {
   //     const response = await fetch("http://localhost:3000/api/routines");
@@ -26,24 +27,39 @@ function App() {
     <>
       <div className="container">
         <BrowserRouter>
-          <NavBar userToken={userToken} />
+          <NavBar userToken={userToken} user={user} setUser={setUser} />
           <Routes>
             <Route
               path="/"
               element={
-                <Login userToken={userToken} setUserToken={setUserToken} />
+                <Login
+                  userToken={userToken}
+                  setUserToken={setUserToken}
+                  user={user}
+                  setUser={setUser}
+                />
               }
             ></Route>
             <Route
               path="/routines"
               element={
-                <Routines userToken={userToken} setUserToken={setUserToken} />
+                <Routines
+                  userToken={userToken}
+                  setUserToken={setUserToken}
+                  activities={activities}
+                  setActivities={setActivities}
+                />
               }
             ></Route>
             <Route
-              path="/activites"
+              path="/activities"
               element={
-                <Activities userToken={userToken} setUserToken={setUserToken} />
+                <Activities
+                  userToken={userToken}
+                  setUserToken={setUserToken}
+                  activities={activities}
+                  setActivities={setActivities}
+                />
               }
             ></Route>
             <Route path="/signUp" element={<SignUp />}></Route>

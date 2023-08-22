@@ -13,7 +13,7 @@ async function getRoutineById(id) {
     } = await client.query(
       `
       SELECT * FROM routines
-      WHERE id = $1
+      WHERE "id" = $1
     `,
       [id]
     );

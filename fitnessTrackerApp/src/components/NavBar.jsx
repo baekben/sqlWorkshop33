@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-export default function NavBar({ userToken }) {
+export default function NavBar({ userToken, user }) {
   return (
     <>
       <div className="navBarContainer max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -24,13 +24,13 @@ export default function NavBar({ userToken }) {
             </li>
             {/* <li>
               <Link
-                to="/activites"
+                to="/activities"
                 className="block py-2 pl-3 pr-4 rounded md:bg-transparent md:p-0"
               >
                 Activities
               </Link>
             </li> */}
-            <li>{userToken && <p>Logged In</p>}</li>
+            <li>{userToken && <p>Logged In - {user}</p>}</li>
           </ul>
         </div>
       </div>

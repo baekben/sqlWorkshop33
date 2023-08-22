@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function Login({ setUserToken }) {
+export default function Login({ setUserToken, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [success, setSucess] = useState(null);
+  const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -25,9 +25,10 @@ export default function Login({ setUserToken }) {
       });
       console.log(response);
       const result = await response.json();
-      setSucess(result);
+      setUser(username);
+      setSuccess(result);
       setUserToken(result.token);
-      navigate("/routines");
+      setTimeout(navigate("/routines"), 5000);
     } catch (error) {
       setError(error);
     }
